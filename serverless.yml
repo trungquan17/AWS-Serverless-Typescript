@@ -1,0 +1,64 @@
+service: crazy-cats
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+
+plugins:
+  - serverless-webpack
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+      # Uncomment only if you already have a DynamoDB running locally
+      # noStart: true
+
+resources:
+  Resources:
+    ### Use dynamoDB local
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: cats
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    ### Use dynamoDB online
+    # GatewayResponse:
+    #   Type: 'AWS::ApiGateway::GatewayResponse'
+    #   Properties:
+    #     ResponseParameters:
+    #       gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+    #       gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    #       gatewayresponse.header.Access-Control-Allow-Methods: "'*'"
+    #     ResponseType: UNAUTHORIZED
+    #     RestApiId:
+    #       Ref: 'ApiGatewayRestApi'
+    #     StatusCode: '401'
+
+
+functions:
+  createCat:
+    handler: handler.createCat
+    events:
+      - http:
+          path: cats
+          method: POST
+  findCatById:
+    handler: handler.findCatById
+    events:
+      - http:
+          path: cats/:id
+          method: GET
