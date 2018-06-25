@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES6",
+    "types": ["node"],
     "module": "commonjs",
     "noEmitOnError": true,
     "noImplicitAny": false,
