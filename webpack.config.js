@@ -6,13 +6,11 @@ module.exports = {
     stats: { warnings: false },
     module: {
         exprContextCritical: false,
-        loaders: [
-            {
-                test: /\.ts(x?)$/,
-                loader: 'ts-loader',
-                exclude: [/node_modules/, /\.(spec|e2e)\.ts$/]
-            },
-        ],
+        rules: [{
+            test: /\.ts(x?)$/,
+            exclude: [/node_modules/, /\.(spec|e2e)\.ts$/],
+            loader: "ts-loader",
+        }]
     },
     resolve: {
         extensions: ['.ts', '.js', '.tsx', '.jsx']

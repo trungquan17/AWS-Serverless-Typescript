@@ -18,11 +18,12 @@
   },
   "homepage": "https://github.com/trungquan17/AWS-Serverless-Typescript#readme",
   "dependencies": {
+    "aws-sdk": "^2.263.1",
     "serverless-dynamodb-local": "^0.2.30",
     "serverless-offline": "^3.25.4",
     "serverless-webpack": "^5.1.5",
-    "ts-loader": "^2.1.0",
+    "ts-loader": "^4.4.1",
     "typescript": "^2.9.2",
-    "webpack": "^3.0.0"
+    "webpack": "^4.12.1"
   }
 }
