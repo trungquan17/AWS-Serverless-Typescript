@@ -1,5 +1,5 @@
-# AWS-Serverless-Typescript
-Serverless Typescript with AWS Lambda, API Gateway and DynamoDB in offline evironment
+# AWS-Serverless-Typescript-DynamoDB-part1
+Serverless Typescript with AWS Lambda, API Gateway and DynamoDB on offline evironment
 
 Author: Trung Quân
 
